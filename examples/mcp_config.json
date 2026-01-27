@@ -1,0 +1,50 @@
+{
+    "_comment": "SecureShell MCP Server Configuration",
+    "_docs": "Auto-detects provider from API keys, or set SECURESHELL_PROVIDER explicitly",
+    "mcpServers": {
+        "secureshell-openai": {
+            "command": "python",
+            "args": [
+                "-m",
+                "secureshell.integrations.mcp_server"
+            ],
+            "env": {
+                "OPENAI_API_KEY": "sk-...",
+                "SECURESHELL_MODEL": "gpt-4.1-mini"
+            }
+        },
+        "secureshell-anthropic": {
+            "command": "python",
+            "args": [
+                "-m",
+                "secureshell.integrations.mcp_server"
+            ],
+            "env": {
+                "ANTHROPIC_API_KEY": "sk-ant-...",
+                "SECURESHELL_MODEL": "claude-sonnet-4-5"
+            }
+        },
+        "secureshell-gemini": {
+            "command": "python",
+            "args": [
+                "-m",
+                "secureshell.integrations.mcp_server"
+            ],
+            "env": {
+                "GEMINI_API_KEY": "AIza...",
+                "SECURESHELL_MODEL": "gemini-2.5-flash"
+            }
+        },
+        "secureshell-groq": {
+            "command": "python",
+            "args": [
+                "-m",
+                "secureshell.integrations.mcp_server"
+            ],
+            "env": {
+                "GROQ_API_KEY": "gsk_...",
+                "SECURESHELL_MODEL": "llama-3.3-70b-versatile"
+            }
+        }
+    }
+}

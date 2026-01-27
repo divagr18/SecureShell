@@ -1,0 +1,43 @@
+[project]
+name = "secureshell"
+version = "0.1.0"
+description = "A drop-in shell execution wrapper for LLM agents that prevents hallucinated/destructive commands."
+authors = [
+    {name = "Keshav", email = "keshav@example.com"},
+]
+dependencies = [
+    "pydantic>=2.0.0",
+    "httpx>=0.25.0",
+    "pyyaml>=6.0",
+    "typing-extensions>=4.5.0",
+    "structlog>=23.1.0",
+    "tenacity>=8.2.0",
+    "pydantic-settings>=2.0.0",
+    "aiofiles>=23.0.0",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.optional-dependencies]
+openai = []
+anthropic = ["mcp"]
+langchain = ["langchain-core"]
+test = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-mock>=3.10.0",
+]
+dev = [
+    "black",
+    "isort",
+    "mypy",
+    "ruff",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["secureshell"]
