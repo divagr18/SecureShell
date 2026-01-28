@@ -5,6 +5,8 @@ Uses pydantic-settings for robust environment variable loading.
 from typing import List, Optional
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+import yaml
+from pathlib import Path
 
 class SecureShellConfig(BaseSettings):
     """
@@ -38,3 +40,31 @@ class SecureShellConfig(BaseSettings):
 
     # Risk Settings
     verify_ssl: bool = True
+    
+    # Allowlist/Blocklist (Configured via YAML)
+    allowlist: List[str] = Field(default_factory=list, description="List of exact command prefixes to always ALLOW")
+    blocklist: List[str] = Field(default_factory=list, description="List of exact command prefixes to always BLOCK")
+
+    @classmethod
+    def load(cls) -> "SecureShellConfig":
+        """Load config from env vars and optional YAML file."""
+        # Load env vars first
+        config = cls()
+        
+        # Check for YAML config
+        yaml_path = Path("secureshell.yaml")
+        if yaml_path.exists():
+            try:
+                with open(yaml_path, "r") as f:
+                    data = yaml.safe_load(f) or {}
+                    
+                    # Update lists if present
+                    if "allowlist" in data:
+                        config.allowlist = data["allowlist"]
+                    if "blocklist" in data:
+                        config.blocklist = data["blocklist"]
+                        
+            except Exception as e:
+                print(f"⚠️ Failed to load secureshell.yaml: {e}")
+        
+        return config

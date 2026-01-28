@@ -51,7 +51,7 @@ class SecureShell:
             blocked_paths: Optional override for blocked paths.
             os_info: Operational System description.
         """
-        self.config = config or SecureShellConfig()
+        self.config = config or SecureShellConfig.load()
         
         # Initialize components
         self.risk_classifier = RiskClassifier()
@@ -159,7 +159,30 @@ class SecureShell:
             await self._audit(command, reasoning, context, result)
             return result
 
-        # 2. Risk Classification
+        # 2. Config Policy Check (Allowlist/Blocklist)
+        # Check blocklist first
+        import fnmatch
+        for pattern in self.config.blocklist:
+            if fnmatch.fnmatch(command, pattern) or command.startswith(pattern):
+                result = self._create_blocked_result(
+                    command, 
+                    "Config Blocked", 
+                    f"Command matches blocklist pattern: {pattern}", 
+                    RiskTier.BLOCKED
+                )
+                await self._audit(command, reasoning, context, result)
+                return result
+                
+        # Check allowlist
+        for pattern in self.config.allowlist:
+            if fnmatch.fnmatch(command, pattern) or command.startswith(pattern):
+                logger.info("config_allow", pattern=pattern)
+                result = await self._run_command(command)
+                result.risk_tier = RiskTier.GREEN # Treat as green
+                await self._audit(command, reasoning, context, result)
+                return result
+
+        # 3. Risk Classification
         risk_tier = self.risk_classifier.classify(command)
         logger.info("risk_assessed", tier=risk_tier)
 
@@ -217,16 +240,16 @@ class SecureShell:
         from pprint import pformat
         
         print("\n" + "="*60)
-        print("🔍 [SecureShell Debug]")
+        print("[SecureShell Debug]")
         print("="*60)
         
         # Determine decision status
         if result.denial_reason:
-            decision = "🛡️ BLOCKED"
+            decision = "[BLOCKED]"
         elif result.success:
-            decision = "✅ ALLOWED"
+            decision = "[ALLOWED]"
         else:
-            decision = "⚠️ ALLOWED (execution failed)"
+            decision = "[ALLOWED (execution failed)]"
         
         debug_data = {
             "Command": cmd,

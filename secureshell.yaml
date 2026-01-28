@@ -1,0 +1,8 @@
+allowlist:
+  - "rm safe_delete.txt"
+  - "echo allowed_*"
+
+blocklist:
+  - "dir secret*"
+  - "ls secret*"
+  - "echo blocked_*"

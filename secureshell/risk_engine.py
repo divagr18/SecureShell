@@ -76,14 +76,29 @@ class RiskClassifier:
             for p in patterns:
                 self._add_rule(p, tier, "Custom rule")
 
-    def classify(self, command: str) -> RiskTier:
+    def classify(self, command: str, config=None) -> RiskTier:
         """
         Determines the risk tier for a command.
-        Priority: BLOCKED > RED > YELLOW > GREEN > (Default: YELLOW)
-        """
-        # Linear scan through rules. 
-        # Since we order checks by severity in logic, we find the "worst" match.
         
+        Priority: 
+        1. Blocklist (Exact Prefix) -> BLOCKED
+        2. Allowlist (Exact Prefix) -> GREEN
+        3. Regex Patterns -> Matched Tier
+        4. Default -> YELLOW
+        """
+        # 1. Check Allowlist/Blocklist if config provided
+        if config:
+            # Blocklist (highest priority)
+            for blocked in config.blocklist:
+                if command.startswith(blocked):
+                    return RiskTier.BLOCKED
+            
+            # Allowlist
+            for allowed in config.allowlist:
+                if command.startswith(allowed):
+                    return RiskTier.GREEN
+        
+        # 2. Regex Pattern Matching
         highest_risk = RiskTier.GREEN
         
         # We need a hierarchy to compare tiers

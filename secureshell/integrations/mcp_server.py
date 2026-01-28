@@ -71,10 +71,14 @@ async def main():
         from secureshell.providers.openai import OpenAI
         provider = OpenAI(
             api_key=os.getenv("OPENAI_API_KEY", ""),
-            model=os.getenv("SECURESHELL_MODEL", "gpt-4o-mini")
+            model=os.getenv("SECURESHELL_MODEL", "gpt-4.1-mini")
         )
     
     shell = SecureShell(provider=provider)
+    
+    # Enable debug mode if requested
+    if os.getenv("SECURESHELL_DEBUG", "").lower() in ("true", "1", "yes"):
+        shell.config.debug_mode = True
     
     # Create MCP server
     server = Server("secureshell")
@@ -131,11 +135,11 @@ async def main():
         
         # Format response
         if result.success:
-            response_text = f"✅ Command executed successfully\n\n**Output:**\n```\n{result.stdout}\n```"
+            response_text = f"[SUCCESS] Command executed successfully\n\n**Output:**\n```\n{result.stdout}\n```"
             if result.stderr:
                 response_text += f"\n\n**Stderr:**\n```\n{result.stderr}\n```"
         else:
-            response_text = f"🛡️ Command blocked or failed\n\n**Reason:** {result.denial_reason or 'Execution failed'}"
+            response_text = f"[BLOCKED] Command blocked or failed\n\n**Reason:** {result.denial_reason or 'Execution failed'}"
             if result.stderr:
                 response_text += f"\n\n**Error:**\n```\n{result.stderr}\n```"
             if result.gatekeeper_response:
