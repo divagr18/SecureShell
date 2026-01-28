@@ -13,7 +13,7 @@ class OpenAIToolGenerator:
             "type": "function",
             "function": {
                 "name": "execute_shell_command",
-                "description": "Execute a shell command safely. You MUST provide clear reasoning.",
+                "description": "Execute shell commands with AI safety validation. Gatekeeper may ALLOW, DENY, or CHALLENGE. Provide detailed reasoning.",
                 "parameters": {
                     "type": "object",
                     "properties": {

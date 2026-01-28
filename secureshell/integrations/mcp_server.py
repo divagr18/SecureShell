@@ -91,7 +91,7 @@ async def main():
                 name="execute_shell_command",
                 description=(
                     "Execute shell commands securely with AI gatekeeper validation. "
-                    "The gatekeeper evaluates command safety based on risk level and reasoning. "
+                    "Gatekeeper may ALLOW, DENY, or CHALLENGE (request clarification). "
                     "Commands are sandboxed and audited. Use this for file operations, "
                     "system commands, git operations, and other shell tasks."
                 ),

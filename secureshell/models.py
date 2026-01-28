@@ -18,6 +18,7 @@ class GatekeeperDecision(str, Enum):
     """Gatekeeper decision types."""
     ALLOW = "ALLOW"
     DENY = "DENY"
+    CHALLENGE = "CHALLENGE"  # Request more information from agent
 
 
 class GatekeeperResponse(BaseModel):

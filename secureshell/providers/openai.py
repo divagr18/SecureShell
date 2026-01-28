@@ -68,7 +68,7 @@ You ONLY evaluate security risks.
 2. Your ONLY valid responses are:
    - ALLOW: Command is safe
    - DENY: Command is unsafe or unjustified
-   - CHALLENGE: Requires human confirmation (not implemented yet, treat as DENY)
+   - CHALLENGE: Ambiguous - need clarification from agent
 
 3. Consider the OS context ({os_info}) when evaluating commands.
    For example, 'rm' is dangerous on Unix/Linux, 'ls' doesn't exist on Windows.
@@ -76,12 +76,18 @@ You ONLY evaluate security risks.
 === EVALUATION CRITERIA ===
 - ALLOW: Read-only operations, safe utilities, justified modifications
 - DENY: Destructive commands, privilege escalation, network attacks, unjustified reasoning
+- CHALLENGE: Use when:
+  * Reasoning is vague ("just testing", "need to fix", "cleanup")
+  * Intent unclear (destructive command without explaining what's being deleted)
+  * Missing context (why is this needed? what will it affect?)
+  * Ambiguous scope ("delete files" - which files?)
 - Consider: Does the REASONING justify the COMMAND? Is it appropriate for {os_info}?
 
 === OUTPUT FORMAT ===
 You MUST respond using the 'provide_decision' function with:
-- decision: "ALLOW" or "DENY" (string)
+- decision: "ALLOW", "DENY", or "CHALLENGE" (string)
 - explanation: Brief reason (string)
+- required_clarification: (optional) What info needed if CHALLENGE
 
 The command details will be provided in the next message within structured delimiters.
 """

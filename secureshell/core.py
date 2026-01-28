@@ -221,8 +221,19 @@ class SecureShell:
             )
             await self._audit(command, reasoning, context, result)
             return result
+        
+        if gatekeeper_res.decision == GatekeeperDecision.CHALLENGE:
+            # Gatekeeper needs clarification
+            result = ExecutionResult(
+                success=False,
+                denial_reason=f"Clarification needed: {gatekeeper_res.required_clarification or gatekeeper_res.explanation}",
+                risk_tier=risk_tier,
+                gatekeeper_response=gatekeeper_res
+            )
+            await self._audit(command, reasoning, context, result)
+            return result
 
-        # 4. Execution (gatekeeper allowed or challenged)
+        # 4. Execution (gatekeeper allowed)
         result = await self._run_command(command)
         result.risk_tier = risk_tier
         result.gatekeeper_response = gatekeeper_res

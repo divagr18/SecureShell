@@ -58,13 +58,14 @@ class SecureShellConfig(BaseSettings):
                 with open(yaml_path, "r") as f:
                     data = yaml.safe_load(f) or {}
                     
-                    # Update lists if present
-                    if "allowlist" in data:
-                        config.allowlist = data["allowlist"]
-                    if "blocklist" in data:
-                        config.blocklist = data["blocklist"]
+                    # Update lists if present (ensure they're lists)
+                    if "allowlist" in data and data["allowlist"]:
+                        config.allowlist = data["allowlist"] if isinstance(data["allowlist"], list) else []
+                    if "blocklist" in data and data["blocklist"]:
+                        config.blocklist = data["blocklist"] if isinstance(data["blocklist"], list) else []
                         
             except Exception as e:
                 print(f"⚠️ Failed to load secureshell.yaml: {e}")
         
         return config
+
