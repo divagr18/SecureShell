@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Question or Discussion
+    url: https://github.com/divagr18/secureshell/discussions
+    about: Ask questions or discuss ideas with the community
+  - name: 📚 Documentation
+    url: https://github.com/divagr18/secureshell/tree/main/docs
+    about: Check out our comprehensive documentation
+  - name: 🔒 Security Vulnerability
+    url: https://github.com/divagr18/secureshell/security/policy
+    about: Report security vulnerabilities privately
