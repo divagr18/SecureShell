@@ -7,7 +7,7 @@
  *   npx tsx examples/secureshell-ts/features/templates_demo.ts
  */
 
-import { SecureShell, listTemplates } from '@secureshell/ts';
+import { SecureShell, listTemplates } from 'secureshell-ts';
 
 async function testTemplate(templateName: string) {
     console.log(`\n${'='.repeat(60)}`);

@@ -9,7 +9,7 @@
  */
 
 import 'dotenv/config';
-import { SecureShell, OpenAIProvider, createSecureShellTool } from '@secureshell/ts';
+import { SecureShell, OpenAIProvider, createSecureShellTool } from 'secureshell-ts';
 import { createAgent } from 'langchain';
 
 async function main() {

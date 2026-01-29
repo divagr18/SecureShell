@@ -10,7 +10,7 @@
  */
 
 import 'dotenv/config';
-import { SecureShell, OpenAIProvider } from '@secureshell/ts';
+import { SecureShell, OpenAIProvider } from 'secureshell-ts';
 
 
 async function main() {

@@ -7,7 +7,7 @@
  *   npx tsx examples/secureshell-ts/features/config_test.ts
  */
 
-import { SecureShell } from '@secureshell/ts';
+import { SecureShell } from 'secureshell-ts';
 
 async function main() {
     // Initialize shell with debug mode (SDK will log everything)

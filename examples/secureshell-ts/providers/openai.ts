@@ -10,7 +10,7 @@
 
 import 'dotenv/config';
 import OpenAI from 'openai';
-import { SecureShell, OpenAITools, OpenAIProvider } from '@secureshell/ts';
+import { SecureShell, OpenAITools, OpenAIProvider } from 'secureshell-ts';
 
 async function main() {
     console.log('🤖 OpenAI Agent + SecureShell Tools Demo\n');

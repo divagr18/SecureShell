@@ -9,7 +9,7 @@
  */
 
 import 'dotenv/config';
-import { SecureShell, OpenAIProvider } from '@secureshell/ts';
+import { SecureShell, OpenAIProvider } from 'secureshell-ts';
 import { createAgent, tool } from 'langchain';
 import * as z from 'zod';
 

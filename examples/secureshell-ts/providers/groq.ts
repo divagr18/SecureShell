@@ -10,7 +10,7 @@
 
 import 'dotenv/config';
 import OpenAI from 'openai';
-import { SecureShell, OpenAITools, GroqProvider } from '@secureshell/ts';
+import { SecureShell, OpenAITools, GroqProvider } from 'secureshell-ts';
 
 async function main() {
     console.log('🤖 Groq Agent + SecureShell Tools Demo\n');

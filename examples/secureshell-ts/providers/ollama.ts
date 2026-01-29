@@ -8,7 +8,7 @@
  */
 
 import OpenAI from 'openai';
-import { SecureShell, OpenAITools, OllamaProvider } from '@secureshell/ts';
+import { SecureShell, OpenAITools, OllamaProvider } from 'secureshell-ts';
 
 async function main() {
     console.log('🤖 Ollama Local Agent + SecureShell Tools\n');

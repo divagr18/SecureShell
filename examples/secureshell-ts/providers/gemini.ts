@@ -10,7 +10,7 @@
 
 import { config } from 'dotenv';
 import { GoogleGenAI, FunctionCallingConfigMode, type Content } from '@google/genai';
-import { SecureShell, GeminiTools, GeminiProvider } from '@secureshell/ts';
+import { SecureShell, GeminiTools, GeminiProvider } from 'secureshell-ts';
 
 // Load .env from project root
 config({ path: '../../.env' });

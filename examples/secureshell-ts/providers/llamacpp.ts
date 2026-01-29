@@ -8,7 +8,7 @@
  */
 
 import OpenAI from 'openai';
-import { SecureShell, OpenAITools, LlamaCppProvider } from '@secureshell/ts';
+import { SecureShell, OpenAITools, LlamaCppProvider } from 'secureshell-ts';
 
 async function main() {
     console.log('🤖 llama.cpp Agent + SecureShell Tools\n');

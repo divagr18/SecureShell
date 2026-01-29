@@ -10,7 +10,7 @@
 
 import 'dotenv/config';
 import OpenAI from 'openai';
-import { SecureShell, OpenAITools, DeepSeekProvider } from '@secureshell/ts';
+import { SecureShell, OpenAITools, DeepSeekProvider } from 'secureshell-ts';
 
 async function main() {
     console.log('🤖 DeepSeek Agent + SecureShell Tools Demo\n');

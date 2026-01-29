@@ -1,5 +1,5 @@
 {
-  "name": "@secureshell/ts",
+  "name": "secureshell-ts",
   "version": "0.1.0",
   "description": "Native TypeScript implementation of SecureShell - AI-powered command execution gatekeeper",
   "main": "dist/index.js",
@@ -23,10 +23,27 @@
     "ai",
     "shell",
     "command-execution",
-    "gatekeeper"
+    "typescript",
+    "openai",
+    "anthropic",
+    "gemini",
+    "langchain",
+    "mcp",
+    "claude",
+    "gpt"
   ],
-  "author": "SecureShell",
+  "author": "Divyansh Agrawal",
+  "email": "keshav.r.1925@gmail.com",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/divagr18/secureshell.git",
+    "directory": "secureshell-ts"
+  },
+  "homepage": "https://github.com/divagr18/secureshell#readme",
+  "bugs": {
+    "url": "https://github.com/divagr18/secureshell/issues"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
     "@google/genai": "^1.38.0",

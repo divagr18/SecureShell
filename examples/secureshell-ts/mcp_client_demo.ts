@@ -62,7 +62,7 @@ async function main() {
     // Agent loop
     for (let turn = 0; turn < 5; turn++) {
         const response = await openai.chat.completions.create({
-            model: 'gpt-4o-mini',
+            model: 'gpt-4.1-mini',
             messages: messages,
             tools: tools
         });

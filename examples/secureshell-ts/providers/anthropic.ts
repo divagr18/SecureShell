@@ -10,7 +10,7 @@
 
 import 'dotenv/config';
 import Anthropic from '@anthropic-ai/sdk';
-import { SecureShell, AnthropicTools, AnthropicProvider } from '@secureshell/ts';
+import { SecureShell, AnthropicTools, AnthropicProvider } from 'secureshell-ts';
 
 async function main() {
     console.log('🤖 Anthropic Claude Agent + SecureShell Tools Demo\n');

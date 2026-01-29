@@ -1,9 +1,9 @@
 [project]
 name = "secureshell"
-version = "0.1.0"
+version = "0.2.0"
 description = "A drop-in shell execution wrapper for LLM agents that prevents hallucinated/destructive commands."
 authors = [
-    {name = "Keshav", email = "keshav@example.com"},
+    {name = "Divyansh Agrawal", email = "keshav.r.1925@gmail.com"},
 ]
 dependencies = [
     "pydantic>=2.0.0",
@@ -18,11 +18,20 @@ dependencies = [
 requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
+keywords = ["security", "llm", "ai", "shell", "command", "claude", "openai", "anthropic", "langchain"]
+
+[project.urls]
+Homepage = "https://github.com/divagr18/secureshell"
+Repository = "https://github.com/divagr18/secureshell.git"
+"Bug Tracker" = "https://github.com/divagr18/secureshell/issues"
+Changelog = "https://github.com/divagr18/secureshell/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
-openai = []
-anthropic = ["mcp"]
-langchain = ["langchain-core"]
+openai = ["openai>=1.0.0"]
+anthropic = ["anthropic>=0.18.0"]
+google = ["google-generativeai>=0.3.0"]
+langchain = ["langchain-core>=0.1.0"]
+mcp = ["mcp>=0.1.0"]
 test = [
     "pytest>=7.0.0",
     "pytest-asyncio>=0.21.0",

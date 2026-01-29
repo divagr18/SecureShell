@@ -10,7 +10,7 @@
  */
 
 import 'dotenv/config';
-import { SecureShell, OpenAIProvider, createSecureShellMCPTool } from '@secureshell/ts';
+import { SecureShell, OpenAIProvider, createSecureShellMCPTool } from 'secureshell-ts';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
