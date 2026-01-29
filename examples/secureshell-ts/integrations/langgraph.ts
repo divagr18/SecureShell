@@ -27,7 +27,7 @@ async function main() {
             model: 'gpt-4.1-mini'
         }),
         template: 'development',
-        config: { debugMode: true }
+        config: { debugMode: true }  // SDK handles all logging
     });
 
     // Create SecureShell tool using helper
@@ -40,9 +40,6 @@ async function main() {
     });
 
     // Test the workflow
-    console.log('Testing: Multi-step workflow with SecureShell\n');
-    console.log('Task: List files and check current directory\n');
-
     const result = await agent.invoke({
         messages: [
             {
@@ -51,9 +48,6 @@ async function main() {
             }
         ]
     });
-
-    console.log('\n✅ Workflow completed');
-    console.log('Total messages:', result.messages.length);
 
     await shell.close();
 }

@@ -19,16 +19,14 @@ async function main() {
         return;
     }
 
-    console.log('🔐 SecureShell + LangChain Integration\n');
-
-    // Initialize SecureShell
+    // Initialize SecureShell with debug mode
     const shell = new SecureShell({
         provider: new OpenAIProvider({
             apiKey: process.env.OPENAI_API_KEY,
             model: 'gpt-4.1-mini'
         }),
         template: 'development',
-        config: { debugMode: true }
+        config: { debugMode: true }  // Disable verbose logs
     });
 
     // Create SecureShell tool using LangChain tool API
@@ -68,13 +66,9 @@ async function main() {
     });
 
     // Test the agent
-    console.log('Testing: List files in current directory\n');
     const result = await agent.invoke({
         messages: [{ role: 'user', content: 'List the files in the current directory' }]
     });
-
-    console.log('\nAgent completed');
-    console.log('Messages:', result.messages.length);
 
     await shell.close();
 }

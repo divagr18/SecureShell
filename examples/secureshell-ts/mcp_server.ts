@@ -18,13 +18,14 @@ import {
     ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 
-// Initialize SecureShell
+// Initialize SecureShell with debug mode (logs to stderr for MCP)
 const shell = new SecureShell({
     provider: new OpenAIProvider({
         apiKey: process.env.OPENAI_API_KEY!,
         model: 'gpt-4.1-mini'
     }),
-    template: 'development'
+    template: 'development',
+    config: { debugMode: true }  // Enable debug logging
 });
 
 // Create MCP server
@@ -74,7 +75,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    console.error('SecureShell MCP server running on stdio');
+    console.error('✅ SecureShell MCP server running on stdio');
 }
 
 main().catch(console.error);

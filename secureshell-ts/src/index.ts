@@ -38,3 +38,4 @@ export { loadConfig } from './config/loader';
 
 // Integrations
 export { createSecureShellTool } from './integrations/langchain';
+export { createSecureShellMCPTool } from './integrations/mcp';
