@@ -39,6 +39,7 @@ class SecureShell:
         self,
         provider: BaseLLMProvider = None,
         config: SecureShellConfig = None,
+        template: str = None,
         allowed_paths: List[str] = None, # Overrides config
         blocked_paths: List[str] = None, # Overrides config
         os_info: str = None
@@ -47,11 +48,24 @@ class SecureShell:
         Args:
             provider: Custom LLM provider instance.
             config: Configuration object. If None, loads from env/.env.
+            template: Security template name ('paranoid', 'development', 'production', 'ci_cd')
             allowed_paths: Optional override for allowed paths.
             blocked_paths: Optional override for blocked paths.
             os_info: Operational System description.
         """
         self.config = config or SecureShellConfig.load()
+        
+        # Apply security template if specified
+        if template:
+            from secureshell.templates import get_template
+            tmpl = get_template(template)
+            logger.info("security_template_loaded", template=template)
+            
+            # Apply template allowlist/blocklist if not already set
+            if not self.config.allowlist:
+                self.config.allowlist = tmpl.allowlist
+            if not self.config.blocklist:
+                self.config.blocklist = tmpl.blocklist
         
         # Initialize components
         self.risk_classifier = RiskClassifier()
@@ -160,14 +174,23 @@ class SecureShell:
             return result
 
         # 2. Config Policy Check (Allowlist/Blocklist)
+        # Extract command type (first word) for matching
+        command_type = None
+        try:
+            parsed = shlex.split(command)
+            if parsed:
+                command_type = parsed[0]
+        except ValueError:
+            # If shlex fails (e.g., unmatched quotes), extract first word manually
+            command_type = command.split()[0] if command.split() else None
+        
         # Check blocklist first
-        import fnmatch
         for pattern in self.config.blocklist:
-            if fnmatch.fnmatch(command, pattern) or command.startswith(pattern):
+            if command_type and command_type == pattern:
                 result = self._create_blocked_result(
                     command, 
                     "Config Blocked", 
-                    f"Command matches blocklist pattern: {pattern}", 
+                    f"Command type '{command_type}' matches blocklist pattern: {pattern}", 
                     RiskTier.BLOCKED
                 )
                 await self._audit(command, reasoning, context, result)
@@ -175,8 +198,8 @@ class SecureShell:
                 
         # Check allowlist
         for pattern in self.config.allowlist:
-            if fnmatch.fnmatch(command, pattern) or command.startswith(pattern):
-                logger.info("config_allow", pattern=pattern)
+            if command_type and command_type == pattern:
+                logger.info("config_allow", pattern=pattern, command_type=command_type)
                 result = await self._run_command(command)
                 result.risk_tier = RiskTier.GREEN # Treat as green
                 await self._audit(command, reasoning, context, result)

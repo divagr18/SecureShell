@@ -1,0 +1,46 @@
+{
+  "name": "@secureshell/ts",
+  "version": "0.1.0",
+  "description": "Native TypeScript implementation of SecureShell - AI-powered command execution gatekeeper",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "security",
+    "llm",
+    "ai",
+    "shell",
+    "command-execution",
+    "gatekeeper"
+  ],
+  "author": "SecureShell",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@google/genai": "^1.38.0",
+    "@langchain/core": "^1.1.17",
+    "js-yaml": "^4.1.0",
+    "langchain": "^1.2.15",
+    "openai": "^4.77.3",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.19.7",
+    "dotenv": "^16.4.7",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}

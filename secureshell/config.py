@@ -42,8 +42,8 @@ class SecureShellConfig(BaseSettings):
     verify_ssl: bool = True
     
     # Allowlist/Blocklist (Configured via YAML)
-    allowlist: List[str] = Field(default_factory=list, description="List of exact command prefixes to always ALLOW")
-    blocklist: List[str] = Field(default_factory=list, description="List of exact command prefixes to always BLOCK")
+    allowlist: List[str] = Field(default_factory=list, description="List of command types (e.g., 'ls', 'echo') to always ALLOW")
+    blocklist: List[str] = Field(default_factory=list, description="List of command types (e.g., 'rm', 'dd') to always BLOCK")
 
     @classmethod
     def load(cls) -> "SecureShellConfig":

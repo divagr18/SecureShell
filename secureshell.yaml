@@ -1,8 +1,10 @@
 allowlist:
-  - "rm safe_delete.txt"
-  - "echo allowed_*"
+  - "echo"
+  - "ls"
 
 blocklist:
-  - "dir secret*"
-  - "ls secret*"
-  - "echo blocked_*"
+  - "rm"
+  - "dd"
+
+# Optional: OS information for the gatekeeper
+# os_info: "Windows 11"
