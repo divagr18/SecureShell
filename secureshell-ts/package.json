@@ -1,6 +1,6 @@
 {
   "name": "secureshell-ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Native TypeScript implementation of SecureShell - AI-powered command execution gatekeeper",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

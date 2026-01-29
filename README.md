@@ -1,4 +1,4 @@
-# SecureShell (Alpha)
+# SecureShell
 
 A "sudo for LLMs" - drop-in shell execution wrapper that prevents hallucinated/destructive commands through AI-powered gatekeeping.
 
