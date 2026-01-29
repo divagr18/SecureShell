@@ -1,9 +1,13 @@
-# SecureShell TypeScript SDK
+<div align="center">
+  <img src="../SecureShell.png" alt="SecureShell Logo" width="200"/>
+  
+  # SecureShell TypeScript SDK
 
-AI-powered command execution with intelligent security gatekeeping. SecureShell uses LLMs to evaluate commands before execution, providing adaptive protection against dangerous operations while maintaining developer productivity.
-
-[![npm version](https://badge.fury.io/js/secureshell-ts.svg)](https://www.npmjs.com/package/secureshell-ts)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![npm version](https://badge.fury.io/js/secureshell-ts.svg)](https://www.npmjs.com/package/secureshell-ts)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  
+  AI-powered command execution with intelligent security gatekeeping. SecureShell uses LLMs to evaluate commands before execution, providing adaptive protection against dangerous operations while maintaining developer productivity.
+</div>
 
 ## Features
 

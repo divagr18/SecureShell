@@ -1,12 +1,16 @@
-# SecureShell
+<div align="center">
+  <img src="SecureShell.png" alt="SecureShell Logo" width="200"/>
+  
+  # SecureShell
 
-[![npm version](https://badge.fury.io/js/secureshell-ts.svg)](https://www.npmjs.com/package/secureshell-ts)
-[![PyPI version](https://badge.fury.io/py/secureshell.svg)](https://pypi.org/project/secureshell/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+  [![npm version](https://badge.fury.io/js/secureshell-ts.svg)](https://www.npmjs.com/package/secureshell-ts)
+  [![PyPI version](https://badge.fury.io/py/secureshell.svg)](https://pypi.org/project/secureshell/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
+  [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 
-**A plug-and-play security layer for LLMs and Agents that prevents dangerous command execution.**
+  **A plug-and-play security layer for LLMs and Agents that prevents dangerous command execution.**
+</div>
 
 SecureShell acts as "sudo for LLMs" - a drop-in zero-trust gatekeeper that evaluates every shell command before execution. It blocks hallucinated commands, prevents platform mismatches (e.g., Unix commands on Windows), and helps agents learn from mistakes.
 
