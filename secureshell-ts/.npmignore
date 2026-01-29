@@ -1,6 +1,6 @@
 # Ignore source files (only ship dist/)
 src/
-examples/
+cookbook/
 *.ts
 !*.d.ts
 

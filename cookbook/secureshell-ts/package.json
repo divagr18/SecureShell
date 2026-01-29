@@ -1,0 +1,27 @@
+{
+    "name": "@secureshell/examples-ts",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "deepseek": "tsx providers/deepseek.ts",
+        "anthropic": "tsx providers/anthropic.ts",
+        "openai": "tsx providers/openai.ts",
+        "gemini": "tsx providers/gemini.ts"
+    },
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.72.0",
+        "@google/genai": "^1.38.0",
+        "@langchain/core": "^1.1.17",
+        "@langchain/langgraph": "^1.1.2",
+        "@langchain/openai": "^1.2.3",
+        "@modelcontextprotocol/sdk": "^1.25.3",
+        "langchain": "^1.2.15",
+        "secureshell-ts": "file:../../secureshell-ts"
+    },
+    "devDependencies": {
+        "@types/node": "^22.19.7",
+        "dotenv": "^16.4.7",
+        "tsx": "^4.21.0"
+    }
+}

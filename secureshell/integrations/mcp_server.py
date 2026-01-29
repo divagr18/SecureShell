@@ -8,7 +8,7 @@ Usage:
     python -m secureshell.integrations.mcp_server
 
 Configuration for Claude Desktop:
-    See examples/mcp_config.json
+    See cookbook/mcp_config.json
 """
 import asyncio
 import sys

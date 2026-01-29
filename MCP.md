@@ -30,7 +30,7 @@ The `execute_shell_command` tool will be available.
 
 ## Programmatic Usage
 
-See `examples/mcp_example.py` for using the MCP server with your own OpenAI agent.
+See `cookbook/mcp_example.py` for using the MCP server with your own OpenAI agent.
 
 ## Supported Providers
 
